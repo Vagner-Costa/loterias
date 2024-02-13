@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    *{
+        @apply m-0 p-0 overflow-hidden box-border
+    }
+    .centralizado{
+        @apply justify-center items-center
+    }
+}
+@layer components{
+    .btn_inicial{
+        @apply flex flex-row font-titulo text-35px font-medium items-center mb-20px 
+        leading-[35px] cursor-pointer
+    }
+    .img_btn_inicial{
+        @apply w-50px h-50px rotate-45 mr-5px
+    }
+}
