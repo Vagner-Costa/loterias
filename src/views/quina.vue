@@ -2,8 +2,12 @@
     <CabecalhoPages></CabecalhoPages>
     <ModalMenu v-if="toggleModal.gettersModalMenu === 'quina'"></ModalMenu>
     <modalMsg v-if="modalMsgQuina.gettersModalMsg"></modalMsg>
-    <main class="w-full h-full min-h-screen bg-branco flex centralizado">
-        <div class="w-full max-w-[450px] p-5px border">
+    <main class="w-full h-full min-h-screen bg-branco flex flex-col justify-start items-center">
+
+        <numeros></numeros>
+        
+        <!-- Volante -->
+        <div class="w-full max-w-[500px] p-5px border border-[#ddd]">
             <cabecalhoJogo></cabecalhoJogo>
             <tracosHoriz></tracosHoriz>
             <div class="w-full flex flex-row relative ">
@@ -39,21 +43,28 @@
     import qtdeApostar from '../components/qtde-apostar.vue'
     import btnQtdeApostar from '../components/btn-qtde-apostar.vue'
     import btnSortear from '../components/btn-sortear.vue'
+    import numeros from '../components/numeros.vue'
     import {useModalMenu} from '../store/modalMenu.js'
     import { useModalMsg } from '../store/modalMsg'
-    import { provide,ref } from 'vue'
+    import { useSorteio } from '../store/sorteio.js'
+    import { provide,ref, onBeforeMount } from 'vue'
 
     const toggleModal = useModalMenu()
     const modalMsgQuina = useModalMsg()
+    const sorteio = useSorteio()
     const qtdeQuina = ref(null)
-    const sorteadosQuina = ref([])
 
     provide('cor','#1C1C50')
     provide('titulo','quina')
     provide('tam',80)
     provide('qtde',qtdeQuina)
 
+    onBeforeMount(()=>{
+        sorteio.actionsLimparSorteio()
+    })
+
     function qtdApostarQuina(payload){
+        sorteio.actionsLimparSorteio()
         qtdeQuina.value = payload
     }
 
@@ -61,9 +72,8 @@
         if(qtdeQuina.value === null){
             modalMsgQuina.actionsModalMsg('Selecione  a quantidade de aposta!')
             return false
-        }else{
-            alert('prossiga')
         }
+        sorteio.actionsSorteio({tam:80,qtde:qtdeQuina.value, jogo:'quina'})
     }
 
 </script>

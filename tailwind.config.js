@@ -49,7 +49,7 @@ export default {
       'preto': '#000',
       'branco':'#fff',
       'vermelho':'#A20E28',
-      'amarelo':'#FAF6DB',
+      'amarelo':'#F2EABA',
       'azul': '#0953B6',
     },
     fontFamily:{

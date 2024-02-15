@@ -1,7 +1,7 @@
 <template>
     <button @click="$emit('qtdeApostar',props.num)"
-        class="w-30px h-20px  border-x border-x-vermelho rounded-[5px] flex 
-        items-center justify-center mx-5px"
+        class="w-40px h-30px  border-x border-x-vermelho rounded-[5px] flex 
+        items-center justify-center mx-[3px]"
         :class="qtde === props.num ? ['bg-azul'] : ['bg-branco']"
     >
         <p class="text-[14px]"
