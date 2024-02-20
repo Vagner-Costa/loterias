@@ -1,0 +1,1 @@
+export const url = 'https://loteriascaixa-api.herokuapp.com/api'

@@ -1,6 +1,6 @@
 <template>
     <div @click="modalMsg.actionsModalMsg('')"
-        class="w-full h-full min-h-screen bg-preto/70 z-10 top-0 left-0 absolute flex centralizado"
+        class="w-full h-full min-h-screen bg-preto/70 z-10 top-0 left-0 fixed flex centralizado"
     >
         <article class="w-[400px] h-[200px] bg-branco absolute ml-0px mt-0px z-50 flex flex-col
             centralizado"

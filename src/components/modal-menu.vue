@@ -1,9 +1,9 @@
 <template>
     <div @click="toggleModal.actionsModalMenu(null)"
-        class="w-full h-full min-h-screen bg-preto/70 absolute z-10 top-0 left-0"
+        class="w-full h-full min-h-screen bg-preto/70 fixed z-10 top-0 left-0"
     >
         <header @click.stop=""
-            class="w-[220px] h-full flex flex-col items-start px-10px pt-40px fixed top-0 
+            class="w-[220px] h-full flex flex-col items-start px-10px pt-100px fixed top-0 
                 transition-all"
             :class="toggleModal.gettersMenuModal ? 
                 ['ml-0px', 'md:ml-0px'] 
