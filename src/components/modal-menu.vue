@@ -14,7 +14,7 @@
             <button class="w-full hover:bg-branco/20 text-start px-10px py-5px" 
                 @click="apostar()"
             >
-                <p class="text-branco text-[20px]" translate="no">Apostar {{ titulo }}</p>
+                <p class="text-branco text-[20px]" translate="no">Home</p>
             </button>
 
             <button class="w-full hover:bg-branco/20 text-start px-10px py-5px" 
