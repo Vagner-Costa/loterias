@@ -7,24 +7,25 @@ export const useSalvarJogo = defineStore('salvarJogo',{
     getters : {},
     actions : {
         actionsSalvarJogo(payload){
-            const {nome,num_sorteado} = payload
+            const nome = payload.nome
             let temJogo = null
+            let array_apostas = []
             
             temJogo = localStorage.getItem(nome)
 
             if(temJogo  === null){
-                localStorage.setItem(nome , JSON.stringify([...num_sorteado]))
+                array_apostas.push(payload) 
+                localStorage.setItem(nome , JSON.stringify(array_apostas))
             }else{
-                localStorage.setItem(nome, [
-                    localStorage.getItem(nome), JSON.stringify([...num_sorteado])
-                ])
+                array_apostas.push(...JSON.parse(localStorage.getItem(nome)), payload)
+                localStorage.setItem(nome, JSON.stringify(array_apostas))
             }
 
             useModalMsg().actionsModalMsg('Aposta salva com sucesso!')
             setTimeout(()=>{
                 useSorteio().actionsLimparSorteio()
                 useModalMsg().actionsModalMsg(null)
-            },2000)
+            },1000)
         }
     }
 })

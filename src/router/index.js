@@ -4,6 +4,10 @@ import megasena from '../views/megasena.vue'
 import duplasena from '../views/duplasena.vue'
 import quina from '../views/quina.vue'
 import lotofacil from '../views/lotofacil.vue'
+import minhasApostasDuplaSena from '../views/minhasApostasDuplaSena.vue'
+import minhasApostasLotofacil from '../views/minhasApostasLotofacil.vue'
+import minhasApostasMegaSena from '../views/minhasApostasMegaSena.vue'
+import minhasApostasQuina from '../views/minhasApostasQuina.vue'
 
 const routes = [
     {
@@ -12,14 +16,19 @@ const routes = [
         component: Home
     },
     {
-        path:'/megasena',
-        name: 'megasena',
-        component: megasena
-    },
-    {
         path:'/duplasena',
         name: 'duplasena',
         component: duplasena
+    },
+    {
+        path:'/lotofacil',
+        name: 'lotofacil',
+        component: lotofacil
+    },
+    {
+        path:'/megasena',
+        name: 'megasena',
+        component: megasena
     },
     {
         path:'/quina',
@@ -27,10 +36,26 @@ const routes = [
         component: quina
     },
     {
-        path:'/lotofacil',
-        name: 'lotofacil',
-        component: lotofacil
+        path:'/minhasApostasDuplaSena',
+        name: 'minhasApostasDuplaSena',
+        component: minhasApostasDuplaSena
     },
+    {
+        path:'/minhasApostasLotofacil',
+        name: 'minhasApostasLotofacil',
+        component: minhasApostasLotofacil
+    },
+    {
+        path:'/minhasApostasMegaSena',
+        name: 'minhasApostasMegaSena',
+        component: minhasApostasMegaSena
+    },
+    {
+        path:'/minhasApostasQuina',
+        name: 'minhasApostasQuina',
+        component: minhasApostasQuina
+    },
+
 ]
 
 const router = createRouter({

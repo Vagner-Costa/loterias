@@ -11,7 +11,7 @@ export const useConsultaLoterias = defineStore('consultaLoterias',{
             return state.dados_loteria;
         }
     },
-    actions:{
+    actions:{ 
         actionsConsultaLoterias(payload){
             const loteria = payload.loteria
             this.dados_loteria = null

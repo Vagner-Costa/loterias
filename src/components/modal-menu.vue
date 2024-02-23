@@ -3,7 +3,7 @@
         class="w-full h-full min-h-screen bg-preto/70 fixed z-10 top-0 left-0"
     >
         <header @click.stop=""
-            class="w-[220px] h-full flex flex-col items-start px-10px pt-100px fixed top-0 
+            class="w-[220px] h-full flex flex-col items-start pt-100px fixed top-0 
                 transition-all"
             :class="toggleModal.gettersMenuModal ? 
                 ['ml-0px', 'md:ml-0px'] 
@@ -11,10 +11,31 @@
                 ['ml-[-220px]', 'md:ml-[-250px]']"
             :style="{backgroundColor:cor}"
         >
-            <button class="text-20px text-branco" @click="minhasApostas()">Minhas apostas</button>
-            <button class="text-20px text-branco" @click="resultados()">Resultados</button>
-            <button class="text-20px text-branco" @click="toggleModal.actionsModalMenu(null)">Fechar</button>
-            <button class="text-20px text-branco" @click="sair">Sair</button>
+            <button class="w-full hover:bg-branco/20 text-start px-10px py-5px" 
+                @click="apostar()"
+            >
+                <p class="text-branco text-[20px]" translate="no">Apostar {{ titulo }}</p>
+            </button>
+
+            <button class="w-full hover:bg-branco/20 text-start px-10px py-5px" 
+                @click="minhasApostas()"
+            >
+                <p class="text-branco text-[20px]" translate="no">Minhas apostas</p>
+                
+            </button>
+
+            <button class="w-full hover:bg-branco/20 text-start px-10px py-5px" 
+                @click="toggleModal.actionsModalMenu(null)"
+            >
+                <p class="text-branco text-[20px]" translate="no">Fechar</p>
+            </button>
+
+            <button class="w-full hover:bg-branco/20 text-start px-10px py-5px" 
+                @click="sair"
+            >
+                <p class="text-branco text-[20px]" translate="no">Sair</p>
+                
+            </button>
         </header>
     </div>
 </template>
@@ -25,15 +46,19 @@
     import { useRouter }from 'vue-router'
 
     const cor = inject('cor')
+    const titulo = inject('titulo')
+
     const toggleModal = useModalMenu()
     const router = useRouter()
 
-    const minhasApostas = (payload)=>{
+    const minhasApostas = ()=>{
         toggleModal.actionsModalMenu(null)
+        router.push(`minhasApostas${titulo}`)
     }
 
-    const resultados = (payload)=>{
+    const apostar = (payload)=>{
         toggleModal.actionsModalMenu(null)
+        router.push(`${titulo}`)
     }
 
     const sair = ()=>{

@@ -32,15 +32,15 @@
         numeros()
     })
 
-    watch(()=>sorteados.gettersSorteio.num_sorteados,()=>{
+    watch(()=>sorteados.gettersSorteio,()=>{
         numeros()
     },{immediate:true})
 
     function numeros(){
         num_trabalhado.value = []
         for(let i = 1; i< (tam+1 ); i++){
-            for(let s = 0; s < sorteados.gettersSorteio.num_sorteados.length ;s++ ){
-                if(i == sorteados.gettersSorteio.num_sorteados[s]){
+            for(let s = 0; s < sorteados.gettersSorteio.length ;s++ ){
+                if(i == sorteados.gettersSorteio[s]){
                     num_trabalhado.value.push({numero:i, background: 'azul'})
                 }
             }

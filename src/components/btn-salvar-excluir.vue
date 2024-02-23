@@ -1,6 +1,6 @@
 <template>
 
-    <div v-if="sorteio.gettersSorteio.num_sorteados.length > 0"
+    <div v-if="sorteio.gettersSorteio.length > 0"
         class="w-full h-full flex flex-col justify-end absolute bg-preto/0 top-0px 
         left-0px p-7px overflow-hidden"
     >
@@ -37,22 +37,10 @@
 </template>
 
 <script setup>
-    import {inject} from 'vue'
     import { useSorteio } from '../store/sorteio'
 
     const sorteio = useSorteio()
-    const titulo = inject('titulo')
-    
-
 </script>
 
 <style  scoped>
-    /* .transicao_aberta{
-        transition: all 0.3s;
-        height:70px !important;
-    }
-    .transicao_fechada{
-        transition: all 0.3s;
-        height:0px !important; 
-    } */
 </style>

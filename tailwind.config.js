@@ -51,6 +51,7 @@ export default {
       'vermelho':'#A20E28',
       'amarelo':'#F2EABA',
       'azul': '#0953B6',
+      'azul_c' : '#95BFED'
     },
     fontFamily:{
       titulo: ["Tilt Warp", 'sans-serif']

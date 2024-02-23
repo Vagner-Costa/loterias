@@ -7,7 +7,7 @@
     >
 
         <!-- Numeros Sorteados -->
-        <numeros></numeros>
+        <numeros :num_sorteados="sorteio.gettersSorteio"></numeros>
         
         <!-- Container da Página -->
         <section class="container_pagina"
@@ -100,6 +100,9 @@
         
         if(qtdeMegaSena.value === null){
             modalMsgMegaSena.actionsModalMsg('Selecione  a quantidade de aposta!')
+            setTimeout(()=>{
+                modalMsgDuplaSena.actionsModalMsg(null)
+            },1000)
             return false
         }
         sorteio.actionsSorteio({tam:60,qtde:qtdeMegaSena.value, jogo:'megaSena'})
@@ -107,13 +110,20 @@
 
     function salvarMegaSena(){
         salvarJogo.actionsSalvarJogo({
-            nome : `megaSena-${consultaLoterias.getersConsultaLoteria.proximoConcurso}`,
-            num_sorteado : sorteio.gettersSorteio.num_sorteados
-        })
+            id: Date.now()+Math.round(Math.random()*99999),
+            nome : `megaSena`,
+            titulo : 'mega sena',
+            data : new Date().toLocaleDateString(),
+            hora : new Date().toLocaleTimeString(),
+            concurso : consultaLoterias.getersConsultaLoteria.proximoConcurso,
+            data_sorteio : consultaLoterias.getersConsultaLoteria.dataProximoConcurso,
+            aposta : sorteio.gettersSorteio
+            }
+        )
 
         setTimeout(()=>{
             qtdeMegaSena.value = null
-        },2000)
+        },1000)
         
     }
 

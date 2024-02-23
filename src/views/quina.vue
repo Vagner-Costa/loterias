@@ -6,7 +6,7 @@
         items-center pt-90px"
     >
         <!-- Numeros Sorteados -->
-        <numeros></numeros>
+        <numeros :num_sorteados="sorteio.gettersSorteio"></numeros>
         
         <!-- Container da Página -->
         <section class="container_pagina"
@@ -98,6 +98,9 @@
     function apostarQuina(){
         if(qtdeQuina.value === null){
             modalMsgQuina.actionsModalMsg('Selecione  a quantidade de aposta!')
+            setTimeout(()=>{
+                modalMsgDuplaSena.actionsModalMsg(null)
+            },1000)
             return false
         }
         sorteio.actionsSorteio({tam:80,qtde:qtdeQuina.value, jogo:'quina'})
@@ -105,13 +108,20 @@
 
     function salvarQuina(){
         salvarJogo.actionsSalvarJogo({
-            nome : `quina-${consultaLoterias.getersConsultaLoteria.proximoConcurso}`,
-            num_sorteado : sorteio.gettersSorteio.num_sorteados
-        })
+            id: Date.now()+Math.round(Math.random()*99999),
+            nome : `quina`,
+            titulo : 'quina',
+            data : new Date().toLocaleDateString(),
+            hora : new Date().toLocaleTimeString(),
+            concurso : consultaLoterias.getersConsultaLoteria.proximoConcurso,
+            data_sorteio : consultaLoterias.getersConsultaLoteria.dataProximoConcurso,
+            aposta : sorteio.gettersSorteio
+            }
+        )
 
         setTimeout(()=>{
             qtdeQuina.value = null
-        },2000)
+        },1000)
     }
 
 </script>

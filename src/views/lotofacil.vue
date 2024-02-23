@@ -6,7 +6,7 @@
         items-center pt-90px"
     >
         <!-- Numeros Sorteados -->
-        <numeros></numeros>
+        <numeros :num_sorteados="sorteio.gettersSorteio"></numeros>
         
         <!-- Container da Página -->
         <section class="container_pagina"
@@ -92,6 +92,9 @@
     function apostarLotofacil(){
         if(qtdeLotofacil.value === null){
             modalMsgLotofacil.actionsModalMsg('Selecione  a quantidade de aposta!')
+            setTimeout(()=>{
+                modalMsgDuplaSena.actionsModalMsg(null)
+            },1000)
             return false
         }
         sorteio.actionsSorteio({tam:25,qtde:qtdeLotofacil.value, jogo:'lotofacil'})
@@ -99,13 +102,20 @@
 
     function salvarLotofacil(){
         salvarJogo.actionsSalvarJogo({
-            nome : `lotofacil-${consultaLoterias.getersConsultaLoteria.proximoConcurso}`,
-            num_sorteado : sorteio.gettersSorteio.num_sorteados
-        })
+            id: Date.now()+Math.round(Math.random()*99999),
+            nome : `lotofacil`,
+            titulo : 'lotofacil',
+            data : new Date().toLocaleDateString(),
+            hora : new Date().toLocaleTimeString(),
+            concurso : consultaLoterias.getersConsultaLoteria.proximoConcurso,
+            data_sorteio : consultaLoterias.getersConsultaLoteria.dataProximoConcurso,
+            aposta : sorteio.gettersSorteio
+            }
+        )
 
         setTimeout(()=>{
             qtdeLotofacil.value = null
-        },2000)
+        },1000)
         
     }
 

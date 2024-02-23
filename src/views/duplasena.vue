@@ -7,7 +7,7 @@
     >
 
         <!-- Numeros Sorteados -->
-        <numeros></numeros>
+        <numeros :num_sorteados="sorteio.gettersSorteio"></numeros>
         
         <!-- Container da Página -->
         <section class="container_pagina"
@@ -74,7 +74,7 @@
     import {useConsultaLoterias} from '../store/consultaLoterias.js'
     import { useSalvarJogo } from '../store/salvarJogo.js'
     import { provide,ref, onBeforeMount } from 'vue'
-
+ 
     const toggleModal = useModalMenu()
     const modalMsgDuplaSena = useModalMsg()
     const sorteio = useSorteio()
@@ -102,6 +102,9 @@
     function apostarDuplasena(){
         if(qtdeDuplaSena.value === null){
             modalMsgDuplaSena.actionsModalMsg('Selecione  a quantidade de aposta!')
+            setTimeout(()=>{
+                modalMsgDuplaSena.actionsModalMsg(null)
+            },1000)
             return false
         }
         sorteio.actionsSorteio({tam:50,qtde:qtdeDuplaSena.value, jogo:'duplaSena'})
@@ -109,13 +112,20 @@
 
     function salvarDuplaSena(){
         salvarJogo.actionsSalvarJogo({
-            nome : `duplaSena-${consultaLoterias.getersConsultaLoteria.proximoConcurso}`,
-            num_sorteado : sorteio.gettersSorteio.num_sorteados
-        })
+            id: Date.now()+Math.round(Math.random()*99999),
+            nome : `duplaSena`,
+            titulo : 'dupla sena',
+            data : new Date().toLocaleDateString(),
+            hora : new Date().toLocaleTimeString(),
+            concurso : consultaLoterias.getersConsultaLoteria.proximoConcurso, 
+            data_sorteio : consultaLoterias.getersConsultaLoteria.dataProximoConcurso,
+            aposta : sorteio.gettersSorteio
+            }
+        )
 
         setTimeout(()=>{
             qtdeDuplaSena.value = null
-        },2000)
+        },1000)
     }
 
 </script>
